@@ -1,11 +1,10 @@
 const inquirer = require('inquirer');
+const { Shape, Triangle, Circle, Square } = require('./lib/shapes');
 const fs = require('fs');
 const path = require('path');
-const { Triangle, Circle, Square, shapes
-} = require('./lib/shapes');
-const { error } = require('console');
 
 // Using inquirer to prompt user for input and validate response
+const promptUser = () => {
 inquirer
   .prompt([
     {
@@ -13,7 +12,7 @@ inquirer
       name: 'text',
       message: 'Enter upto three characters for the logo:',
       validate: function (input) {
-        if (!input || input.lenght > 3) {
+        if (!input || input.length > 3) {
         return 'Please enter up to three characters.';
       }
       return true;
@@ -31,10 +30,10 @@ inquirer
     },
   },
   {
-    type: 'input',
+    type: 'list',
     name: 'shape',
     message: 'Choose a shape for the logo:',
-    choices: shapes,
+    choices: ['triangle', 'circle', 'square'],
   },
   {
     type: 'input',
@@ -49,30 +48,29 @@ inquirer
   },
   ])
 
-  // Using .then to generate logo, in conjunction with Promises
-  .then(generateLogo)
+  // Generate appropriate answers based on user's choice
+  .then ((answers) => {
+    let shape;
 
-  // Using .catch to handle any errors, in conjunction with Promises
-  .catch((error) => console.error (error));
-
-  // Function to generate logo based on user's answers
-  function generateLogo(answers) {
-    const {text,  textColor, shape, shapeColor} = answers;
-    let svgContent;
-
-    switch (shape) {
+    switch (answers.shape) {
+      case 'triangle':
+        shape = new Triangle(answers.text, answers.textColor, answers.shapeColor);
+        break;
       case 'circle':
-        svgContent = new Circle(text, textColor, shapeColor).getSVG();
-      break;
-    case 'triangle':
-      svgContent = new Triangle(text, textColor, shapeColor).getSVG();
-      break;
-    case 'square':
-      svgContent - new Square(text, textColor, shapeColor).getSVG();
-      break;
+        shape = new Circle(answers.text, answers.textColor, answers.shapeColor);
+        break;
+      case 'square':
+        shape = new Square(answers.text, answers.textColor, answers.shapeColor);
+        break;
+      default:
+        console.error('invalid shape choice');
+        return;
   }
 
-  // Code to write & save SVG content for the logo generated, & handle errors
+  // Code to write SVG content for selected shape
+  const svgContent = shape.getSVG();
+  
+  // Save SVG content for the logo generated & handle errors
   const fileName = 'logo.svg';
   const filePath = path.join(__dirname, fileName);
 
@@ -83,4 +81,9 @@ inquirer
     }
     console.log(`Generated ${fileName}`);
   });
-}
+})
+.catch((error) => console.error(error));
+};
+
+// Call promptUser function to start application
+promptUser();

@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200">
+  <polygon points="150,50 75,150 225,150" fill="blue" />
+  <text x="50%" y="60%" dominant-baseline="middle" text-anchor="middle" font-size="38" fill="white">LKN</text>
+</svg>

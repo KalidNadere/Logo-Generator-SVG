@@ -22,7 +22,7 @@
   "homepage": "https://github.com/KalidNadere/Logo-Generator-SVG#readme",
   "dependencies": {
     "fs": "^0.0.1-security",
-    "inquirer": "^9.2.8",
+    "inquirer": "^8.1.0",
     "path": "^0.12.7"
   }
 }
