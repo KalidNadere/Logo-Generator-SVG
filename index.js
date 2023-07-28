@@ -5,7 +5,7 @@ const { Triangle, Circle, Square, shapes
 } = require('./lib/shapes');
 const { error } = require('console');
 
-// Using inquirer to promt user for input and validate response
+// Using inquirer to prompt user for input and validate response
 inquirer
   .prompt([
     {
