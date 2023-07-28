@@ -1,0 +1,28 @@
+{
+  "name": "logo-generator-svg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KalidNadere/Logo-Generator-SVG.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KalidNadere/Logo-Generator-SVG/issues"
+  },
+  "homepage": "https://github.com/KalidNadere/Logo-Generator-SVG#readme",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "inquirer": "^9.2.8",
+    "path": "^0.12.7"
+  }
+}
