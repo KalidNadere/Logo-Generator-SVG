@@ -71,4 +71,16 @@ inquirer
       svgContent - new Square(text, textColor, shapeColor).getSVG();
       break;
   }
+
+  // Code to write & save SVG content for the logo generated, & handle errors
+  const fileName = 'logo.svg';
+  const filePath = path.join(__dirname, fileName);
+
+  fs.writeFile(filePath, svgContent, (err) => {
+    if (err) {
+      console.error('Error writing SVG file:', err);
+      return;
+    }
+    console.log(`Generated ${fileName}`);
+  });
 }
