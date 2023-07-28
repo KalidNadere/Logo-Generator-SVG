@@ -54,22 +54,3 @@ inquirer
 
   // Using .catch to handle any errors, in conjunction with Promises
   .catch((error) => console.error (error));
-
-  // Function to generate logo based on user's answers
-  function generateLogo(answers) {
-    const {text,  textColor, shape, shapeColor} = answers;
-    let svgContent;
-
-    switch (shape) {
-      case 'circle':
-        svgContent = new Circle(text, textColor, shapeColor).getSVG();
-      break;
-    case 'triangle':
-      svgContent = new Triangle(text, textColor, shapeColor).getSVG();
-      break;
-    case 'square':
-      svgContent - new Square(text, textColor, shapeColor).getSVG();
-      break;
-  }
-  
-  }
