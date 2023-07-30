@@ -33,7 +33,7 @@ inquirer
     type: 'list',
     name: 'shape',
     message: 'Choose a shape for the logo:',
-    choices: ['triangle', 'circle', 'square'],
+    choices: ['Triangle', 'Circle', 'Square'],
   },
   {
     type: 'input',
@@ -53,13 +53,13 @@ inquirer
     let shape;
 
     switch (answers.shape) {
-      case 'triangle':
+      case 'Triangle':
         shape = new Triangle(answers.text, answers.textColor, answers.shapeColor);
         break;
-      case 'circle':
+      case 'Circle':
         shape = new Circle(answers.text, answers.textColor, answers.shapeColor);
         break;
-      case 'square':
+      case 'Square':
         shape = new Square(answers.text, answers.textColor, answers.shapeColor);
         break;
       default:
